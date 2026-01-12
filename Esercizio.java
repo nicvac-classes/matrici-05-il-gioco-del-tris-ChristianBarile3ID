@@ -13,7 +13,7 @@ class Esercizio {
     static boolean inserisciInGriglia(String[][] G, int i, int j, String s) {
         boolean input = false;
         --i; --j;
-        if ((i>1 && i<3) && (j>1 && j<3) && (G[i][j].equals("-"))) {
+        if ((i>=0 && i<3) && (j>=0 && j<3) && (G[i][j].equals("-"))) {
             G[i][j] = s;
             input = true;
         }
