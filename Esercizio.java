@@ -10,19 +10,42 @@ class Esercizio {
     
     //Inserisce il simbolo x oppure o nella grigla di gioco in riga i e colonna j.
     //Se la mossa non è valida (pedina già presente o le coordinate sono fuori la griglia) allora ritorno falso.
-    static boolean inserisciInGriglia( /*scrivere qui i parametri richiesti dall'esercizio*/ ) {
-        //SCRIVERE QUI IL CODICE RICHIESTO DALL'ESERCIZIO
+    static boolean inserisciInGriglia(String[][] G, int i, int j, String s) {
+        boolean input = false;
+        --i; --j;
+        if ((i>1 && i<3) && (j>1 && j<3) && (G[i][j].equals("-"))) {
+            G[i][j] = s;
+            input = true;
+        }
+        return input;
     }
 
     //Azzero la griglia di gioco inserendo la stringa "-" in tutte le celle.
-    static void azzeraGriglia(/*scrivere qui i parametri richiesti dall'esercizio*/ ) {
-        //SCRIVERE QUI IL CODICE RICHIESTO DALL'ESERCIZIO
+    static void azzeraGriglia(String[][] G, int n, int m) {
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                G[i][j] = "-";
+            }
+        }
     }
 
     //Controlla se nella griglia c'è una vincita.
     // s può valore "O" oppure "X"
-    static boolean controllaVincita(/*scrivere qui i parametri richiesti dall'esercizio*/ ) {
-        //SCRIVERE QUI IL CODICE RICHIESTO DALL'ESERCIZIO
+    static boolean controllaVincita(String[][] G, String s) {
+        boolean vincita = false;;
+        if (
+        (G[0][0].equals(s) && G[0][1].equals(s) && G[0][2].equals(s)) ||
+        (G[1][0].equals(s) && G[1][1].equals(s) && G[1][2].equals(s)) ||
+        (G[2][0].equals(s) && G[2][1].equals(s) && G[2][2].equals(s)) ||
+        (G[0][0].equals(s) && G[1][0].equals(s) && G[2][0].equals(s)) ||
+        (G[0][1].equals(s) && G[1][1].equals(s) && G[2][1].equals(s)) ||
+        (G[0][2].equals(s) && G[1][2].equals(s) && G[2][2].equals(s)) ||
+        (G[0][0].equals(s) && G[1][1].equals(s) && G[2][2].equals(s)) ||
+        (G[0][2].equals(s) && G[1][1].equals(s) && G[2][0].equals(s))
+        ) {
+            vincita = true;
+        }
+        return vincita;
     }
 
     //Conta quante caselle libere ci sono ancora.
